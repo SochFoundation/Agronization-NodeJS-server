@@ -1,20 +1,20 @@
 {
-  "name": "agronization",
+  "name": "Agronization",
   "version": "1.0.0",
-  "description": "backend for agronization app",
+  "description": "backend for ag app",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
     "body-parser": "*",
+    "bcrypt-nodejs": "*",
     "express": "*",
     "jsonwebtoken": "^7.0.0",
     "mongodb": "^2.1.21",
     "mongoose": "^4.4.20",
-    "mongoose-text-search": "0.0.2",
     "morgan": "^1.7.0",
+    "node-restful": "^0.2.5"
   },
   "author": "Madhav Poudel",
   "license": "ISC"
