@@ -36,6 +36,8 @@ app.get('/*', function(req, res){
 	res.sendFile(__dirname + '/public/app/view/index.html')
 });
 
-app.listen(port);
+app.listen(port, function(){
+	console.log("Listening to port 3000");
+});
 
 console.log("connected..");
