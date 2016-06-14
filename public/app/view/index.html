@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+	<head>
+	<base href="/"></base>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Title Page</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" type="text/css" href="app/assets/css/bootstrap.min.css">
+		<!-- <script type="text/javascript" src="app/assets/js/bootstrap.min.js"></script> -->
+		<script type="text/javascript" src="app/assets/js/angular.min.js"></script>
+		<script type="text/javascript" src="app/assets/js/angular-route.min.js"></script>
+		<!-- Services -->
+		<script type="text/javascript" src="app/services/authService.js"></script>
+		<!-- Controllers -->
+		<script type="text/javascript" src="app/controllers/mainCtrl.js"></script>
+		<script type="text/javascript" src="app/controllers/userCtrl.js"></script>
+		<script type="text/javascript" src="app/app.route.js"></script>
+
+	    <script type="text/javascript" src="app/app.js"></script>
+
+	</head>
+	<body ng-controller="MainController as main">
+		<header>
+		<div class="navbar-navbar-default" ng-if="!main.loggedin">
+				<div class="container">
+					<div class="row">
+						<div class="navbar-header">
+							<a href="/" class="navbar-brand">WELCOME</a>
+						</div>
+
+						<ul class="nav navbar-nav">
+							<li><a href="/users"></a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+							<li ng-if="!main.loggedIn"><a href="/signup">Sign Up</a></li>
+							<li ng-if="main.loggedIn"><a href="">Hello {{main.user.name}}</a></li>
+							<li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+
+
+		<div ng-view></div>
+	</body>
+</html>
