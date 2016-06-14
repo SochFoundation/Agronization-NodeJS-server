@@ -3,37 +3,30 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var AgroSchema   = new Schema({
-    name: {
+    org_name: {
     	type: String,
     	required: true,
     },
-    desc: {
+    org_desc: {
         type: String,
         required: true,
     },
-    type: {
+    org_type: {
     	type: String,
     	required: true,
     },
-    location: {
+    org_location: {
         type: String,
         required: true,
     },
-    phone_number: {
-        type: String
-    },
-    email: {
-        type: String
-    },
-    website: String,
-    location_lat: String,
-    location_lan: String,
-    image: String,
-    is_approved: {
-        type: Boolean,
-        default: false
-    },
+    org_phone_number: String,
+    org_email: String,
+    org_website: String,
+    org_location_lat: String,
+    org_location_lan: String,
+    org_image: String,
+
 });
-AgroSchema.index({ name: 'text', desc: 'text', type: 'text', location: "text" });
+//AgroSchema.index({ name: 'text', desc: 'text', type: 'text', location: "text" });
 
 module.exports = mongoose.model('Agro', AgroSchema);

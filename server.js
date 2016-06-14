@@ -29,11 +29,12 @@ app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/public'));
 
-app.use('/', UserRouter);
+app.use('/user', UserRouter);
 app.use('/api', AgRouter);
 
-app.get('/*', function(req, res){
-	res.sendFile(__dirname + '/public/app/view/index.html')
+app.get('/', function(req, res){
+		res.send("Hello");
+	//res.sendFile(__dirname + '/public/app/view/index.html')
 });
 
 app.listen(port, function(){

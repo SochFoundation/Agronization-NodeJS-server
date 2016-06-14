@@ -10,11 +10,11 @@
     "body-parser": "*",
     "bcrypt-nodejs": "*",
     "express": "*",
-    "jsonwebtoken": "^7.0.0",
-    "mongodb": "^2.1.21",
-    "mongoose": "^4.4.20",
-    "morgan": "^1.7.0",
-    "node-restful": "^0.2.5"
+    "jsonwebtoken": "*",
+    "mongodb": "*",
+    "mongoose": "*",
+    "morgan": "*",
+    "node-restful": "*"
   },
   "author": "Madhav Poudel",
   "license": "ISC"

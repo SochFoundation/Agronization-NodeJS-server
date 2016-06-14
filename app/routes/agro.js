@@ -122,7 +122,7 @@ router.get('/users', function(req, res){
 });
 
 router.get('/me', function(req, res){
-	
+
 	res.json(req.decoded);
 });
 
