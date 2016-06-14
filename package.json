@@ -1,8 +1,9 @@
 {
-  "name": "eventure",
+  "name": "agronization",
   "version": "1.0.0",
-  "description": "backend for eventure app",
+  "description": "backend for agronization app",
   "main": "server.js",
+  "start":"node server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,7 +16,6 @@
     "mongoose": "^4.4.20",
     "mongoose-text-search": "0.0.2",
     "morgan": "^1.7.0",
-    "node-restful": "^0.2.5"
   },
   "author": "Madhav Poudel",
   "license": "ISC"
