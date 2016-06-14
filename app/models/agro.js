@@ -25,8 +25,7 @@ var AgroSchema   = new Schema({
     org_location_lat: String,
     org_location_lan: String,
     org_image: String,
-
 });
-//AgroSchema.index({ name: 'text', desc: 'text', type: 'text', location: "text" });
+AgroSchema.index({ org_name: 'text', org_desc: 'text', org_type: 'text', org_location: "text" });
 
 module.exports = mongoose.model('Agro', AgroSchema);

@@ -8,7 +8,7 @@ var Agro         = require("../models/agro");
 
 app.set('appSecret', config.secret);
 
-//Get all Agro datas
+// Get All Agro data
 router.route('/agro')
 .get(function(req, res){
 	Agro.find(function(err, data){
@@ -18,7 +18,7 @@ router.route('/agro')
 		res.json(data);
 	})
 });
-// get single agro data
+// Get Single Agro data
 router.route('/agro/:id')
 .get(function(req, res){
 	Agro.findById(req.params.id, function(err, data){
@@ -29,26 +29,22 @@ router.route('/agro/:id')
 	});
 });
 
-// SearchAble Route
+// Get Searched Agro Data
 router.route('/agros/:query')
 .get(function(req, res){
-
 	Agro.find({ $text: { $search: req.params.query } }, function(err, data) {
-        if (err) return res.status(500).json({error: "Error fetching data", message: err});
-
+        if (err) return res.status(500).json({status: false, error: "Error fetching data", message: err});
         if(data.length != 0 ){
-	        res.status(200).json(data);
+	        res.json(data);
 	    }else{
-	    	res.status(200).json({"status": false, "message": "Error to get search data '"+req.params.query+"' "});
+	    	res.json({status: false, message: "Error to get search data '"+req.params.query+"' "});
 	    }
     });
-
 });
 
-//middleware definations
+//middleware defination
 router.use(function(req, res, next){
 	var token = req.body.token || req.param('token') || req.headers['x-access-token'];
-
 	//Check if token exists
 	if(token){
 		jwt.verify(token, app.get('appSecret'), function(err, decoded){
@@ -56,7 +52,6 @@ router.use(function(req, res, next){
 				res.status(403).send({success: false, message: "Authentication failed."});
 			} else{
 				req.decoded = decoded;
-				console.log(req.decoded);
 				next();
 			}
 		});
@@ -66,7 +61,7 @@ router.use(function(req, res, next){
 });
 
 router.get('/', function(req, res){
-	res.json("hello world");
+	res.json({status: true, message: "You can get Agriculture data from this API."});
 });
 
 router.route('/agro')
@@ -90,6 +85,15 @@ router.route('/agro/:id')
 			res.send(err);
 		}
 		data.org_name = req.body.org_name;
+		data.org_desc = req.body.org_desc;
+		data.org_type = req.body.org_type;
+		data.org_location = req.body.org_location;
+		data.org_location_lat = req.body.org_location_lat;
+		data.org_location_lan = req.body.org_location_lan;
+		data.org_phone_number = req.body.org_phone_number;
+		data.org_email = req.body.org_email;
+		data.org_website = req.body.org_website;
+		data.org_image = req.body.org_image;
 
 		data.save(function(err, data){
 			if(err){
@@ -106,7 +110,7 @@ router.route('/agro/:id')
 		if(err){
 			res.send(err);
 		}
-		res.json({message: "Ag Data Deleted"});
+		res.json({status: true, message: "Data Deleted"});
 	});
 });
 
@@ -122,7 +126,6 @@ router.get('/users', function(req, res){
 });
 
 router.get('/me', function(req, res){
-
 	res.json(req.decoded);
 });
 

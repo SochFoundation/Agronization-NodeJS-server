@@ -16,7 +16,6 @@ function createToken(user){
 	}, app.get('appSecret') , {} );
 	return token;
 }
-
 router.post('/signup', function(req, res){
 	var user = new User({
 		email: req.body.email,
@@ -29,14 +28,7 @@ router.post('/signup', function(req, res){
 			res.send(err);
 			return;
 		}
-		res.json({message: "User has been Created.", token: token});
-	});
-	user.save(function(err){
-		if(err) {
-			res.send(err);
-		}
-
-		res.json({message: "user has been created"});
+		res.json({status: true, message: "User has been Created.", token: token});
 	});
 });
 
@@ -48,7 +40,7 @@ router.post('/login', function(req, res){
 		}else if(user){
 			var validPassword = user.comparePassword(req.body.password);
 			if(!validPassword) {
-				res.send({message: "Invalid Password"});
+				res.send({status: false, message: "Invalid Password"});
 			} else{
 				// Create a token
 				var token = createToken(user);

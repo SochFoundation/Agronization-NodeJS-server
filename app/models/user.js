@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
 var bcrypt = require('bcrypt-nodejs');
-
 var userSchema = Schema({
 	email: {
     	type: String,
@@ -20,6 +18,7 @@ var userSchema = Schema({
 	admin: Boolean,
 	created_at: Date
 });
+
 userSchema.pre('save', function(next){
     var user = this;
     if(!user.isModified('password')) return next();
@@ -35,5 +34,4 @@ userSchema.methods.comparePassword = function(password){
     var user = this;
     return bcrypt.compareSync(password, user.password);
 };
-
 module.exports = mongoose.model("User", userSchema);

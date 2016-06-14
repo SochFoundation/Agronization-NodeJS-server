@@ -27,14 +27,11 @@ mongoose.connect( config.database , function(err, database){
 // Using morgan to log requests to the console
 app.use(morgan('dev'));
 
-//app.use(express.static(__dirname + '/public'));
-
-app.use('/user', UserRouter);
+app.use('/', UserRouter);
 app.use('/api', AgRouter);
 
 app.get('/', function(req, res){
-		res.send("Hello");
-	//res.sendFile(__dirname + '/public/app/view/index.html')
+		res.send({"status": true, "message": "Welcome to Agronization Rest Api"});
 });
 
 app.listen(port, function(){
